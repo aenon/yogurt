@@ -24,4 +24,4 @@ yogurt is a simple shell script for yaourt, providing operations and options eas
 
 ## LICENSE
 
-Yogurt is published under [GPL V3](LICENSE). The bash_completion file is in public domain.
+Yogurt is published under [GPL V3](LICENSE.md). The bash_completion file is in public domain.
