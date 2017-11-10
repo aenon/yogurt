@@ -1,6 +1,6 @@
 # yogurt
 
-<img src="yogurt.png" width="304px" alt="yogurt logo">
+<img src="yogurt.png" width="152px" alt="yogurt logo">
 
 ## NAME
 
@@ -25,3 +25,7 @@ yogurt is a simple shell script for yaourt, providing operations and options eas
 ## LICENSE
 
 Yogurt is published under [GPL V3](LICENSE.md). The bash_completion file is in public domain.
+
+## LOGO LICENSE
+
+[Yogurt by Vashte Johnson](https://thenounproject.com/term/yogurt/52570/) from the [Noun Project](https://thenounproject.com/).
