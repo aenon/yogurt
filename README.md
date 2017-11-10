@@ -1,30 +1,46 @@
-# yogurt
+# YOGURT
 
 <img src="yogurt.png" width="152px" alt="yogurt logo">
 
 ## NAME
 
-yogurt — a frontend to pacman based on yaourt, with human readable operations and options.
+`yogurt` — a frontend to pacman based on `yaourt`, with human readable operations and options.
 
 ## SYNOPSIS
 
-Usage:
+`yogurt` specific usage:
 
- yogurt <operation> [options] [packages]
+```
+yogurt <operation> [packages]
+```
 
- yogurt <search pattern|package file>
+example
+```
+yogurt update
+yogurt upgrade
+yogurt search PACKAGENAME
+```
+
+calling `yaourt`:
+
+```
+yogurt <operation> [options] [packages]
+```
+
+example
+```
+yogurt -Si PACKAGENAME
+```
 
 ## DESCRIPTION
 
-yogurt is a simple shell script for yaourt, providing operations and options easier to understand
+`yogurt` is a simple frontend to pacman based on `yaourt`, providing operations easy to understand for humans.
 
 ## OPERATIONS
 
-## OPTIONS
-
 ## LICENSE
 
-Yogurt is published under [GPL V3](LICENSE.md). The bash_completion file is in public domain.
+`yogurt` is published under [GPL V3](LICENSE.md). The bash_completion file is in public domain.
 
 ## LOGO LICENSE
 
