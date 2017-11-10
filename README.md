@@ -1,6 +1,6 @@
 # yogurt
 
-![yogurt](yogurt.png?raw=true)
+<img src="yogurt.png" width="304px" alt="yogurt logo">
 
 ## NAME
 
