@@ -34,13 +34,13 @@ yogurt -Si PACKAGENAME
 
 ## DESCRIPTION
 
-`yogurt` is a simple frontend to pacman based on `yaourt`, providing operations easy to understand for humans.
+`yogurt` is a simple frontend to `pacman` based on `yaourt`, providing operations easy to understand for humans.
 
 ## OPERATIONS
 
 ## LICENSE
 
-`yogurt` is published under [GPL V3](LICENSE.md). The bash_completion file is in public domain.
+`yogurt` is published under [GPL V3](LICENSE.md). The `bash_completion` file is in public domain.
 
 ## LOGO
 
