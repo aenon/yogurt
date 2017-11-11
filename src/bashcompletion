@@ -1,0 +1,28 @@
+# file: /etc/bash_completion.d/yogurt
+
+# Bash completion for yogurt
+# Use pacman completion (_pacman())
+#
+# This file is in the public domain.
+#
+
+
+## yogurt completion
+
+_yogurt()
+{
+    local cur prev opts
+    local _yogurt_opts='moo -h --help -V --version update upgrade dist-upgrade autoclean clean autoremove list-installed list-manual list-auto search show install remove purge depends'
+
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+_completion_loader pacman
+_completion_loader yaourt
+complete -F _yogurt yogurt
