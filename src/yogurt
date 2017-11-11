@@ -1,0 +1,102 @@
+#!/bin/bash
+#
+# yogurt: a yaourt/pacman frontend for human beings
+#
+# Copyright (c) 2017, Xilin Sun
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+NAME='yogurt'
+VERSION='0.0.1'
+
+YAOURT=${YAOURT:-yaourt}
+PACMAN=${PACMAN:-pacman}
+
+usage() {
+  echo "$(gettext 'yogurt: a yaourt/pacman frontend for human beings.')"
+  if ((${#CMDLINE_ARGS[*]} > 1)); then
+		echo "$(gettext 'Yogurt does not support --help for a particular option.')"
+		echo "$(gettext 'The following is pacman help')"
+		echo
+    $PACMAN -h "${CMDLINE_ARGS[@]}"
+		return
+	fi
+  echo "$(gettext 'Usage: yogurt <operation> [...]')"
+  echo "$(gettext 'operations:')"
+  echo -e "\t$(gettext 'yogurt {-h --help}')"
+  echo -e "\t$(gettext 'yogurt autoclean')"
+  echo -e "\t$(gettext 'yogurt autoremove')"
+  echo -e "\t$(gettext 'yogurt clean')"
+  echo -e "\t$(gettext 'yogurt list-auto')"
+  echo -e "\t$(gettext 'yogurt list-installed')"
+  echo -e "\t$(gettext 'yogurt list-manul')"
+  echo -e "\t$(gettext 'yogurt update')"
+  echo -e "\t$(gettext 'yogurt upgrade')"
+
+  echo -e "\t$(gettext 'yogurt depends <package(s)>')"
+  echo -e "\t$(gettext 'yogurt install <package(s)>')"
+  echo -e "\t$(gettext 'yogurt purge <package(s)>')"
+  echo -e "\t$(gettext 'yogurt remove <package(s)>')"
+  echo -e "\t$(gettext 'yogurt search <package(s)>')"
+  echo -e "\t$(gettext 'yogurt show <package(s)>')"
+}
+
+version() {
+	echo "yogurt $VERSION"
+	echo "$(gettext 'Repo: https://github.com/aenon/yogurt')"
+}
+
+# Moo like aptitude
+moo() {
+  echo "$(gettext 'There are no Easter Eggs in this program.')"
+}
+
+CMDLINE_ARGS=("$@")
+
+if [[ $1 ]]; then
+	case "$1" in
+		# yogurt options
+    # help
+		moo)                  moo;;
+    -h|--help)            usage;;
+    -V|--version)         version;;
+
+    # database and file options
+    udpate)               exec $YAOURT -Sy;;
+    upgrade|dist-upgrade) exec $YAOURT -Syu;;
+    autoclean)            exec $YAOURT -Sc;;
+    clean)                exec $YAOURT -Scc;;
+    autoremove)           exec $YAOURT -R $($YAOURT -Qdtq);;
+    list-installed)       exec $YAOURT -Q;;
+    list-manual)          exec $YAOURT -Qe;;
+    list-auto)            exec $YAOURT -Qd;;
+
+    # package options
+    search)               shift; exec $YAOURT -Ss "$@";;
+    show)                 shift; exec $YAOURT -Si "$@";;
+    install)              shift; exec $YAOURT -S "$@";;
+    remove)               shift; exec $YAOURT -Rs "$@";;
+    purge)                shift; exec $YAOURT -Rns "$@";;
+    depends)              shift; exec $YAOURT -Si "$@" | grep "Name\|Depends On";;
+
+    # pass to yaourt
+		# -*)                 [[ ! $PACMAN_CMD ]] && PACMAN_CMD=0;;
+		*)                  (( ! $1 )) && exec $YAOURT "$@";;
+	esac
+else
+  usage
+fi
+
+exit 0
