@@ -74,7 +74,7 @@ if [[ $1 ]]; then
     -V|--version)         version;;
 
     # database and file options
-    udpate)               exec $YAOURT -Sy;;
+    update)               exec $YAOURT -Sy;;
     upgrade|dist-upgrade) exec $YAOURT -Syu;;
     autoclean)            exec $YAOURT -Sc;;
     clean)                exec $YAOURT -Scc;;
