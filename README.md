@@ -42,6 +42,6 @@ yogurt -Si PACKAGENAME
 
 `yogurt` is published under [GPL V3](LICENSE.md). The bash_completion file is in public domain.
 
-## LOGO LICENSE
+## LOGO
 
 [Yogurt by Vashte Johnson](https://thenounproject.com/term/yogurt/52570/) from the [Noun Project](https://thenounproject.com/).
