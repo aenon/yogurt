@@ -27,12 +27,12 @@ PACMAN=${PACMAN:-pacman}
 usage() {
   echo "$(gettext 'yogurt: a yaourt/pacman frontend for human beings.')"
   if ((${#CMDLINE_ARGS[*]} > 1)); then
-		echo "$(gettext 'Yogurt does not support --help for a particular option.')"
-		echo "$(gettext 'The following is pacman help')"
-		echo
+    echo "$(gettext 'Yogurt does not support --help for a particular option.')"
+    echo "$(gettext 'The following is pacman help')"
+    echo
     $PACMAN -h "${CMDLINE_ARGS[@]}"
-		return
-	fi
+    return
+  fi
   echo "$(gettext 'Usage: yogurt <operation> [...]')"
   echo "$(gettext 'operations:')"
   echo -e "\t$(gettext 'yogurt {-h --help}')"
@@ -54,8 +54,8 @@ usage() {
 }
 
 version() {
-	echo "yogurt $VERSION"
-	echo "$(gettext 'Repo: https://github.com/aenon/yogurt')"
+  echo "yogurt $VERSION"
+  echo "$(gettext 'Repo: https://github.com/aenon/yogurt')"
 }
 
 # Moo like aptitude
@@ -66,10 +66,10 @@ moo() {
 CMDLINE_ARGS=("$@")
 
 if [[ $1 ]]; then
-	case "$1" in
-		# yogurt options
+  case "$1" in
+    # yogurt options
     # help
-		moo)                  moo;;
+    moo)                  moo;;
     -h|--help)            usage;;
     -V|--version)         version;;
 
@@ -92,9 +92,9 @@ if [[ $1 ]]; then
     depends)              shift; exec $YAOURT -Si "$@" | grep "Name\|Depends On";;
 
     # pass to yaourt
-		# -*)                 [[ ! $PACMAN_CMD ]] && PACMAN_CMD=0;;
-		*)                  (( ! $1 )) && exec $YAOURT "$@";;
-	esac
+    # -*)                 [[ ! $PACMAN_CMD ]] && PACMAN_CMD=0;;
+    *)                  (( ! $1 )) && exec $YAOURT "$@";;
+  esac
 else
   usage
 fi
