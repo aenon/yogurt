@@ -19,7 +19,7 @@
 #
 
 NAME='yogurt'
-VERSION='0.0.1'
+VERSION='0.0.2'
 
 YAOURT=${YAOURT:-yaourt}
 PACMAN=${PACMAN:-pacman}
