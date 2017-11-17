@@ -32,10 +32,6 @@ example
 yogurt -Si PACKAGENAME
 ```
 
-## DESCRIPTION
-
-`yogurt` is a simple frontend to `pacman` based on `yaourt`, providing operations easy to understand for humans.
-
 ## OPERATIONS
 
 | Operation 	| Effect	|
