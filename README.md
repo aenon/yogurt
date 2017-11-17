@@ -4,7 +4,7 @@
 
 ## NAME
 
-`yogurt` — a frontend to pacman based on `yaourt`, with human readable operations and options.
+`yogurt` — a frontend to `pacman` based on `yaourt`, with human readable operations and options.
 
 ## SYNOPSIS
 
